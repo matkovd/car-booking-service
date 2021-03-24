@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.4.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'com.palantir.docker' version '0.26.0'
+    id "com.github.johnrengelman.shadow" version '5.2.0'
+}
+
+group = 'com.github.matkovd'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+ext {
+    swaggerVersion = '2.7.0'
+    testContainersVersion = '1.15.2'
+}
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-jdbc"
+    implementation "org.springframework.boot:spring-boot-starter-validation"
+    implementation "io.springfox:springfox-swagger2:$swaggerVersion"
+    implementation "io.springfox:springfox-swagger-ui:$swaggerVersion"
+    runtimeOnly "mysql:mysql-connector-java"
+
+    annotationProcessor "org.projectlombok:lombok"
+    compileOnly "org.projectlombok:lombok"
+
+    testCompileOnly "org.projectlombok:lombok"
+    testAnnotationProcessor "org.projectlombok:lombok"
+
+    implementation platform("org.testcontainers:testcontainers-bom:$testContainersVersion")
+    testImplementation "org.testcontainers:mysql"
+    testImplementation "org.testcontainers:junit-jupiter"
+    
+	testImplementation "org.springframework.boot:spring-boot-starter-test"
+}
+
+test {
+	useJUnitPlatform()
+}
+
+
+docker {
+    name "docker.pkg.github.com/matkovd/car-booking-service/${project.name}"
+    tag 'latest', System.getenv("GITHUB_RUN_NUMBER")
+    files tasks.shadowJar.outputs
+    copySpec.into("build/libs")
+}
+

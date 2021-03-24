@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost:3306}/${MYSQL_DB:car_booking}
+    username: ${MYSQL_USERNAME:car_booking}
+    password: ${MYSQL_PASSWORD:mgCnv3mEBnj4fBpF}
+    initialization-mode: always
+
+booking:
+  period: ${BOOKING_PERIOD:30m}

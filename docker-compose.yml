@@ -1,5 +1,4 @@
-version: '3.1'
-
+version: "3.4"
 services:
   db:
     image: mysql:8
@@ -12,3 +11,14 @@ services:
       MYSQL_PASSWORD: mgCnv3mEBnj4fBpF
     ports:
       - 3306:3306
+  microservice:
+    image: docker.pkg.github.com/matkovd/car-booking-service/car-booking-service:latest
+    depends_on:
+      - db
+    restart: always
+    environment:
+      MYSQL_HOST: db:3306
+      MYSQL_USERNAME: car_booking
+      MYSQL_PASSWORD: mgCnv3mEBnj4fBpF
+      MYSQL_DB: car_booking
+      BOOKING_PERIOD: 30m

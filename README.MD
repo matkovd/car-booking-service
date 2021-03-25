@@ -1,9 +1,13 @@
 ## Description
 Service is running on port 8080, swagger-ui is available under /swagger-ui.html
-All controllers are shown there
+All controllers are shown there  
 
+Service is running
 ## Running locally
 ### Everything from docker registry
+**NB** It will require authorization into Github Packages
+1. Create personal access token with rights to read:packages
+2. ``` docker login docker.pkg.github.com --username your_username``` and use github access token as a password
 ```
 docker-compose up
 ```
@@ -22,6 +26,13 @@ docker-compose up -f docker-compose-mysql.yml
 ./gradlew bootBuildImage --imageName 
 ```
 
+## Pushing docker image
+### With Gradle and custom dockerfile
+```
+./gradlew dockerTagsPush
+```
+
+
 ## Env variables
 |Variable   | Usage  |
 |---|---|
@@ -32,7 +43,7 @@ docker-compose up -f docker-compose-mysql.yml
 | BOOKING_PERIOD | Booking period in ISO8601 format   |
 
 
-## Improvements:
+~~## Improvements:
 1. Start reusing customer details by phone number / Id number
 2. Restrict person with same contact info to pick to cars at the same time
 3. Make booking period configurable not only through env variable
@@ -40,4 +51,4 @@ docker-compose up -f docker-compose-mysql.yml
 5. Make start and end time optional params
 ## Questionable places:
 1. Same code for getAllCars in both external / internal api. Personally prefer redundancy over creating dependency between different package
-2. Create static fromDto / toDto constructors for models. Might be controversial  
+2. Create static fromDto / toDto~~ constructors for models. Might be controversial  

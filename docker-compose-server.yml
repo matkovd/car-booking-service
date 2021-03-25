@@ -1,0 +1,32 @@
+version: "3.4"
+services:
+  db:
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ~/db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: qWmp6fphJ2pEsgVM
+      MYSQL_DATABASE: car_booking
+      MYSQL_USER: car_booking
+      MYSQL_PASSWORD: mgCnv3mEBnj4fBpF
+    ports:
+      - 127.0.0.1:3306:3306
+  microservice:
+    image: docker.pkg.github.com/matkovd/car-booking-service/car-booking-service:latest
+    depends_on:
+      - db
+    restart: always
+    environment:
+      MYSQL_HOST: db:3306
+      MYSQL_USERNAME: car_booking
+      MYSQL_PASSWORD: mgCnv3mEBnj4fBpF
+      MYSQL_DB: car_booking
+      BOOKING_PERIOD: 30m
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/.docker/config.json:/config.json
+    command: --interval 30

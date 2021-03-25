@@ -6,9 +6,12 @@ plugins {
     id "com.github.johnrengelman.shadow" version '5.2.0'
 }
 
+
 group = 'com.github.matkovd'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+
 ext {
     swaggerVersion = '2.7.0'
     testContainersVersion = '1.15.2'
@@ -46,8 +49,26 @@ test {
 
 docker {
     name "docker.pkg.github.com/matkovd/car-booking-service/${project.name}"
-    tag "myRegistry", "docker.pkg.github.com/matkovd/car-booking-service/${project.name}:latest"
+    tag "githubPackagesLatest", "docker.pkg.github.com/matkovd/car-booking-service/${project.name}:latest"
+    tag "githubPackagesBuildVersion", "docker.pkg.github.com/matkovd/car-booking-service/${project.name}:${System.getenv('GITHUB_RUN_NUMBER')}"
     files tasks.shadowJar.outputs
     copySpec.into("build/libs")
 }
 
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.github.matkovd.carbookingservice.CarBookingServiceApplication'
+        )
+    }
+}
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+}

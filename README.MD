@@ -23,7 +23,13 @@ docker-compose up -f docker-compose-mysql.yml
 ```
 
 ## Env variables
-
+|Variable   | Usage  |
+|---|---|
+| MYSQL_HOST  |  MySQL host  | 
+| MYSQL_DB  | MySQL database  |
+| MYSQL_USERNAME |MySQL username   |
+| MYSQL_PASSWORD  | MySQL password  |
+| BOOKING_PERIOD | Booking period in ISO8601 format   |
 
 
 ## Improvements:

@@ -1,4 +1,4 @@
 FROM adoptopenjdk/openjdk11
-COPY build/libs/microservice-*-all.jar microservice.jar
+COPY build/libs/car-booking-service-*-all.jar car-booking-service.jar
 EXPOSE 8080
-CMD ["java", "-Dcom.sun.management.jmxremote", "-Xmx128m", "-XX:+IdleTuningGcOnIdle", "-Xtune:virtualized", "-jar", "microservice.jar"]
+CMD ["java", "-jar", "car-booking-service.jar"]

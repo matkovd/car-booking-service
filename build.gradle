@@ -46,7 +46,7 @@ test {
 
 docker {
     name "docker.pkg.github.com/matkovd/car-booking-service/${project.name}"
-    tag "docker.pkg.github.com/matkovd/car-booking-service/${project.name}:latest", "docker.pkg.github.com/matkovd/car-booking-service/${project.name}:${System.getenv("GITHUB_RUN_NUMBER")}"
+    tag "myRegistry", "docker.pkg.github.com/matkovd/car-booking-service/${project.name}:latest"
     files tasks.shadowJar.outputs
     copySpec.into("build/libs")
 }

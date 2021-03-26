@@ -2,7 +2,6 @@
 Service is running on port 8080, swagger-ui is available under /swagger-ui.html
 All controllers are shown there  
 
-Service is running
 ## Running locally
 ### Everything from docker registry
 **NB** It will require authorization into Github Packages

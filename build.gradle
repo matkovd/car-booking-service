@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.4.4'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'com.palantir.docker' version '0.26.0'
 }
 
@@ -16,11 +16,11 @@ ext {
     testContainersVersion = '1.15.2'
 }
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-web"
     implementation "org.springframework.boot:spring-boot-starter-jdbc"
     implementation "org.springframework.boot:spring-boot-starter-validation"
     implementation "io.springfox:springfox-swagger2:$swaggerVersion"
@@ -38,11 +38,11 @@ dependencies {
     testImplementation "org.testcontainers:mysql"
     testImplementation "org.testcontainers:junit-jupiter"
     
-	testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
 
 

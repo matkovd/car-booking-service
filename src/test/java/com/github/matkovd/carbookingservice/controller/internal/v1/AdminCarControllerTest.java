@@ -28,7 +28,7 @@ class AdminCarControllerTest {
     void getAll_Returns200() {
         when(carService.getAll()).thenReturn(new ArrayList<>());
         var controller = new AdminCarController(carService);
-        assertEquals(controller.getAll().getStatusCode(), HttpStatus.OK);
+        assertEquals(HttpStatus.OK, controller.getAll().getStatusCode());
     }
 
     @Test
@@ -36,6 +36,6 @@ class AdminCarControllerTest {
         var request = new CarRequestDto(NUMBER, DESCRIPTION);
         when(carService.create(eq(request))).thenReturn(new CarResponseDto());
         var controller = new AdminCarController(carService);
-        assertEquals(controller.create(request).getStatusCode(), HttpStatus.CREATED);
+        assertEquals(HttpStatus.CREATED, controller.create(request).getStatusCode());
     }
 }

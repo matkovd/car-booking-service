@@ -36,13 +36,13 @@ class AdminBookingControllerTest {
     void getByCarIdAndTimeBetween_InvalidParams_Returns400() {
         var controller = new AdminBookingController(bookingService);
         var result = controller.getByCarIdAndTimeBetween(CAR_ID, END_TIME, START_TIME);
-        assertEquals(result.getStatusCode(), HttpStatus.BAD_REQUEST);
+        assertEquals(HttpStatus.BAD_REQUEST, result.getStatusCode());
     }
 
     @Test
     void deleteBooking_Returns204() {
         var controller = new AdminBookingController(bookingService);
-        assertEquals(controller.deleteBooking(BOOKING_ID).getStatusCode(), HttpStatus.NO_CONTENT);
+        assertEquals(HttpStatus.NO_CONTENT, controller.deleteBooking(BOOKING_ID).getStatusCode());
         verify(bookingService, times(1)).delete(eq(BOOKING_ID));
     }
 }

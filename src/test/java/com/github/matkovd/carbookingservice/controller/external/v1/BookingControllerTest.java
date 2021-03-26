@@ -26,5 +26,4 @@ class BookingControllerTest {
         var result = controller.createBooking(request);
         assertEquals(HttpStatus.CREATED, result.getStatusCode());
     }
-
 }

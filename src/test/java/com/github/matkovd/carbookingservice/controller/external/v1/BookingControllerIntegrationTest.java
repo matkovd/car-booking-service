@@ -35,7 +35,7 @@ class BookingControllerIntegrationTest extends AbstractControllerIntegrationTest
                 "idNumber",
                 "phone"
         ));
-        assertEquals(result.getStatus(), HttpStatus.CREATED.value());
+        assertEquals(HttpStatus.CREATED.value(), result.getStatus());
     }
 
     @Test
@@ -51,7 +51,7 @@ class BookingControllerIntegrationTest extends AbstractControllerIntegrationTest
         var result = createBooking(new BookingRequestDto(
                 null,"", "", "", ""
         ));
-        assertEquals(result.getStatus(), HttpStatus.BAD_REQUEST.value());
+        assertEquals(HttpStatus.BAD_REQUEST.value(), result.getStatus());
     }
 
     @Test
@@ -74,6 +74,6 @@ class BookingControllerIntegrationTest extends AbstractControllerIntegrationTest
                 "phone"
         ));
 
-        assertEquals(result.getStatus(), HttpStatus.CONFLICT.value());
+        assertEquals(HttpStatus.CONFLICT.value(), result.getStatus());
     }
 }

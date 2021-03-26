@@ -29,5 +29,4 @@ public class BookingController {
     public ResponseEntity<BookingResponseDto> createBooking(@Valid @RequestBody BookingRequestDto bookingRequestDto) {
         return new ResponseEntity<>(bookingService.create(bookingRequestDto), HttpStatus.CREATED);
     }
-
 }

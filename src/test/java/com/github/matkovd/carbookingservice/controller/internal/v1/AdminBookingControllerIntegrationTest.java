@@ -114,5 +114,4 @@ class AdminBookingControllerIntegrationTest extends AbstractControllerIntegratio
         assertEquals(HttpStatus.OK.value(), bookingsAfterDeletion.getResponse().getStatus());
         assertFalse(bookingsAfterDeletion.getResponse().getContentAsString().contains("entityToBeDeleted"));
     }
-
 }

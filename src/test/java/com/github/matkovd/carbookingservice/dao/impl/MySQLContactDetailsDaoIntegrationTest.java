@@ -62,5 +62,4 @@ class MySQLContactDetailsDaoIntegrationTest extends AbstractDaoIntegrationTest {
         assertEquals(id, matchId);
         putDatabaseToInitialState(jdbcTemplate);
     }
-
 }

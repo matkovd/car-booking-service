@@ -58,5 +58,4 @@ class MySQLCarDaoIntegrationTest extends AbstractDaoIntegrationTest {
         assertEquals(car.getDescription(), carFromDb.getDescription());
         putDatabaseToInitialState(jdbcTemplate);
     }
-
 }

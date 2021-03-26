@@ -38,7 +38,7 @@ public class AdminCarControllerIntegrationTest extends AbstractControllerIntegra
     void create_ValidRequest_Returns201() throws Exception {
         var expectedCar = new CarRequestDto("createCar", "description");
         var result = createCar(expectedCar);
-        assertEquals(result.getStatus(), HttpStatus.CREATED.value());
+        assertEquals(HttpStatus.CREATED.value(), result.getStatus());
         assertTrue(result.getContentAsString().contains(expectedCar.getNumber()));
         assertTrue(result.getContentAsString().contains(expectedCar.getDescription()));
     }
@@ -47,6 +47,6 @@ public class AdminCarControllerIntegrationTest extends AbstractControllerIntegra
     void create_InvalidRequest_Returns400() throws Exception {
         var expectedCar = new CarRequestDto("", "");
         var result = createCar(expectedCar);
-        assertEquals(result.getStatus(), HttpStatus.BAD_REQUEST.value());
+        assertEquals(HttpStatus.BAD_REQUEST.value(), result.getStatus());
     }
 }

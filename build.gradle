@@ -3,7 +3,6 @@ plugins {
     id 'org.springframework.boot' version '2.4.4'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'com.palantir.docker' version '0.26.0'
-    id "com.github.johnrengelman.shadow" version '5.2.0'
 }
 
 
@@ -51,7 +50,7 @@ docker {
     name "docker.pkg.github.com/matkovd/car-booking-service/${project.name}"
     tag "githubPackagesLatest", "docker.pkg.github.com/matkovd/car-booking-service/${project.name}:latest"
     tag "githubPackagesBuildVersion", "docker.pkg.github.com/matkovd/car-booking-service/${project.name}:${System.getenv('GITHUB_RUN_NUMBER')}"
-    files tasks.shadowJar.outputs
+    files tasks.bootJar.outputs
     copySpec.into("build/libs")
 }
 

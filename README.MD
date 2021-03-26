@@ -13,7 +13,7 @@ docker-compose up
 ```
 ### MySQL Only
 ```
-docker-compose up -f docker-compose-mysql.yml
+docker-compose -f docker-compose-mysql.yml up
 ```
 
 ## Building docker image
@@ -43,7 +43,7 @@ docker-compose up -f docker-compose-mysql.yml
 | BOOKING_PERIOD | Booking period in ISO8601 format   |
 
 
-~~## Improvements:
+## Improvements:
 1. Start reusing customer details by phone number / Id number
 2. Restrict person with same contact info to pick to cars at the same time
 3. Make booking period configurable not only through env variable
@@ -51,4 +51,4 @@ docker-compose up -f docker-compose-mysql.yml
 5. Make start and end time optional params
 ## Questionable places:
 1. Same code for getAllCars in both external / internal api. Personally prefer redundancy over creating dependency between different package
-2. Create static fromDto / toDto~~ constructors for models. Might be controversial  
+2. Create static fromDto / toDto constructors for models. Might be controversial  
